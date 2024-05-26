@@ -25,17 +25,18 @@ class RouteController extends Controller
 
     public function gotoTransaksi()
     {
-        $names = DB::select('SELECT name FROM users');
-        $names = array_map(function($user) {
-            return $user->name;
-        }, $names);
-
-        return view('layout.transaksi', ['names' => $names]);
+        $custs = DB::select('SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY id ASC');
+        return view('layout.transaksi', ['custs' => $custs]);
     }
 
     public function gotoUser()
     {
         $custs = DB::select('SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY id ASC');
         return view('layout.user')->with('customers', $custs);
+    }
+
+    public function gotoReportTransaction(){
+        $invoices = DB::select('SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY id ASC');
+        return view('layout.report.transaksi-report')->with('invoices', $invoices);
     }
 }

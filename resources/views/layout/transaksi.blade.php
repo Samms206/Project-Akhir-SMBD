@@ -70,19 +70,17 @@
                                     <div class="form-group">
                                         <label for="kasir">Kasir</label>
                                         <input type="text" class="form-control" id="kasir" placeholder="Kasir"
-                                            readonly value="
-                                            {{-- {{ Auth::user()->name }} --}}
-                                            Sams">
+                                            readonly value="Sams" name="staff_id">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="select2SinglePlaceholder">Customer</label>
-                                        <select class="select2-single-placeholder form-control" name="customer"
+                                        <select class="select2-single-placeholder form-control" name="cust_id"
                                             id="select2SinglePlaceholder">
                                             <option value="">Select</option>
-                                            @foreach ($names as $name)
-                                                <option value="{{ $name }}">{{ $name }}</option>
+                                            @foreach ($custs as $cust)
+                                                <option value="{{ $cust->id }}">{{ $cust->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -135,6 +133,8 @@
                         <div class="col-lg-4">
                             <input type="hidden" name="total" id="tf_total">
                             <input type="hidden" name="change" id="tf_change">
+                            <input type="hidden" name="cust_id" id="tf_cust_id">
+                            <input type="hidden" name="staff_id" id="tf_staff_id" value="1">
                             <div class="form-group">
                                 <label for="diskon">Diskon(Rp.)</label>
                                 <input value="0" type="text" class="form-control" id="diskon" placeholder="Rp.-" name="diskon">

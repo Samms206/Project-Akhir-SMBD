@@ -52,6 +52,15 @@
 
 <!-- Page level custom scripts -->
 <script>
+    //add id customer
+    $(document).ready(function() {
+        $('#select2SinglePlaceholder').on('change', function() {
+            var selectedCustomerId = $(this).val();
+            $('#tf_cust_id').val(selectedCustomerId);
+        });
+    });
+    //end add id customer
+
 
     //Update Total
     function updateTotal() {
