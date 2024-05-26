@@ -36,4 +36,9 @@ class CustomerController extends Controller
 
         return redirect('/customer')->with('warning', 'Data customer telah dihapus.');
     }
+
+    public function rollbackCustomer($id){
+        DB::update('UPDATE customers SET deleted_at = NULL WHERE id = ?', [$id]);
+        return redirect('/customer')->with('success', 'Berhasil');
+    }
 }

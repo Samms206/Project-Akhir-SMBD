@@ -39,4 +39,15 @@ class RouteController extends Controller
         $invoices = DB::select('SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY id ASC');
         return view('layout.report.transaksi-report')->with('invoices', $invoices);
     }
+
+    public function gotoRollbackProduct(){
+        $barangs = DB::select('SELECT * FROM products WHERE deleted_at IS NOT NULL ORDER BY id ASC');
+        return view('layout.rollback.product')->with('barangs', $barangs);
+
+    }
+
+    public function gotoRollbackCustomer(){
+        $custs = DB::select('SELECT * FROM customers WHERE deleted_at IS NOT NULL ORDER BY id ASC');
+        return view('layout.rollback.customer')->with('customers', $custs);
+    }
 }

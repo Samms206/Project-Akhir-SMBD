@@ -137,18 +137,6 @@
                         </div>
                     </div>
                     {{-- end modal edit --}}
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
-                        <div>
-                        <button class="btn btn-primary" href="" data-toggle="modal" data-target="#exampleModal"
-                            id="#myBtn">
-                            Add <i class="fas fa-plus-circle"></i>
-                        </button>
-                        <a class="btn btn-warning" href="{{ route('rollback-product') }}">
-                            Rollback <i class="fas fa-recycle"></i>
-                        </a>
-                        </div>
-                    </div>
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
@@ -170,19 +158,13 @@
                                         <td>{{ $barang->hrg_beli }}</td>
                                         <td>{{ $barang->created_at }}</td>
                                         <td>
-                                            <a class="btn btn-primary edit-btn" href="#" data-toggle="modal"
-                                                data-target="#editModal" data-barang-id="{{ $barang->id }}"
-                                                data-barang-nama="{{ $barang->name }}"
-                                                data-barang-stok="{{ $barang->stock }}"
-                                                data-barang-harga-jual="{{ $barang->hrg_jual }}"
-                                                data-barang-harga-beli="{{ $barang->hrg_beli }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger delete-btn" href="#" data-toggle="modal"
-                                                data-target="#deleteModal" data-barang-id="{{ $barang->id }}"
-                                                data-barang-nama="{{ $barang->name }}">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                            <form action="{{ route('rollback-product-execute', $barang->id) }}" method="POST" >
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-warning edit-btn">
+                                                    <i class="fas fa-recycle"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

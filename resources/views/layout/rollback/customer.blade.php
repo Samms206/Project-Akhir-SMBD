@@ -126,18 +126,6 @@
                         </div>
                     </div>
                     {{-- end Modal --}}
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Customer</h6>
-                        <div>
-                        <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addModal"
-                        id="#myBtn">
-                            Add <i class="fas fa-plus-circle"></i>
-                        </a>
-                        <a class="btn btn-warning" href="{{ route('rollback-customer') }}">
-                            Rollback <i class="fas fa-recycle"></i>
-                        </a>
-                    </div>
-                    </div>
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
@@ -155,21 +143,13 @@
                                         <td>{{ $cust->address }}</td>
                                         <td>{{ $cust->phone }}</td>
                                         <td>
-                                            <a class="btn btn-primary edit-btn-user" href="#" data-toggle="modal"
-                                                data-target="#editModalUser"
-                                                data-user-id="{{ $cust->id }}"
-                                                data-user-name="{{ $cust->name }}"
-                                                data-user-phone="{{ $cust->phone }}"
-                                                data-user-address="{{ $cust->address }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger delete-btn-user" href="#" data-toggle="modal"
-                                                data-target="#deleteModalUser"
-                                                data-user-id="{{ $cust->id }}"
-                                                data-user-name="{{ $cust->name }}"
-                                                >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                            <form action="{{ route('rollback-customer-execute', $cust->id) }}" method="POST" >
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-warning edit-btn">
+                                                    <i class="fas fa-recycle"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

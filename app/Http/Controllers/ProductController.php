@@ -45,4 +45,10 @@ class ProductController extends Controller
 
         return redirect('/barang')->with('warning', 'Data barang telah dihapus.');
     }
+
+    public function rollbackProduct($id){
+        DB::update('UPDATE products SET deleted_at = NULL WHERE id = ?', [$id]);
+        return redirect('/barang')->with('success', 'Berhasil');
+    }
+
 }
