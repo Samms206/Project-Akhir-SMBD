@@ -27,12 +27,11 @@ SELECT COUNT(*) as sales FROM transactions WHERE DATE(created_at) >= CURDATE() -
 SELECT COUNT(*) as sales FROM transactions WHERE DATE(created_at) >= CURDATE() - INTERVAL 365 DAY;
 
 --Produk terjual
-SELECT p.name as product, SUM(td.qty) as qty, p.stock FROM products p
+SELECT p.name as product, SUM(td.qty) as sold, p.stock FROM products p
 JOIN detail_transactions td ON td.product_id = p.id
 JOIN transactions t ON t.id = td.trans_id
-WHERE DATE(t.created_at) = CURDATE()
 GROUP BY p.name
-ORDER BY qty DESC
+ORDER BY qty DESC;
 
 
 --total tiap bulannya (january - juni)

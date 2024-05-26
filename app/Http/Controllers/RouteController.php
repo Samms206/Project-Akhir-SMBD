@@ -9,7 +9,8 @@ class RouteController extends Controller
 {
     public function index()
     {
-        return view('layout.dashboard');
+        $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
+        return view('layout.dashboard', ['vhistory_trans' => $vhistory_trans]);
     }
 
     public function gotoCharts()
