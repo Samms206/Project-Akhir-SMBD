@@ -50,4 +50,51 @@ WHERE
     MONTH(created_at) BETWEEN 1 AND 6;
 
 
+-- procedure insert Product
+CREATE PROCEDURE insertProduct(IN vname VARCHAR(255), IN vhrg_beli INT, IN vhrg_jual INT, IN vstock INT)
+BEGIN
+    INSERT INTO products (name, hrg_beli, hrg_jual, stock, created_at, updated_at) VALUES (vname, vhrg_beli, vhrg_jual, vstock, NOW(), NOW());
+END
+CALL insertProduct('test', 10000, 20000, 10);
+DROP PROCEDURE insertProduct;
 
+-- procedure update Product
+CREATE PROCEDURE updateProduct(IN vid INT, IN vname VARCHAR(255), IN vhrg_beli INT, IN vhrg_jual INT, IN vstock INT)
+BEGIN
+    UPDATE products SET name = vname, hrg_beli = vhrg_beli, hrg_jual = vhrg_jual, stock = vstock, updated_at = NOW() WHERE id = vid;
+END
+CALL updateProduct(11, 'Yupi', 500, 1000, 100);
+DROP PROCEDURE updateProduct;
+
+-- procedure delete Product
+CREATE PROCEDURE deleteProduct(IN vid INT)
+BEGIN
+    DELETE FROM products WHERE id = vid;
+END
+CALL deleteProduct(11);
+DROP PROCEDURE deleteProduct;
+
+
+-- procedure insert Customer
+CREATE PROCEDURE insertCustomer(IN vname VARCHAR(255), IN vaddress VARCHAR(255), IN vphone VARCHAR(255))
+BEGIN
+    INSERT INTO customers (name, address, phone, created_at, updated_at) VALUES (vname, vaddress, vphone, NOW(), NOW());
+END
+CALL insertCustomer('test', 'test', 'test');
+DROP PROCEDURE insertCustomer;
+
+-- procedure update Customer
+CREATE PROCEDURE updateCustomer(IN vid INT, IN vname VARCHAR(255), IN vaddress VARCHAR(255), IN vphone VARCHAR(255))
+BEGIN
+    UPDATE customers SET name = vname, address = vaddress, phone = vphone, updated_at = NOW() WHERE id = vid;
+END
+CALL updateCustomer(11, 'Yupi', 'Yupi', 'Yupi');
+DROP PROCEDURE updateCustomer;
+
+-- procedure delete Customer
+CREATE PROCEDURE deleteCustomer(IN vid INT)
+BEGIN
+    DELETE FROM customers WHERE id = vid;
+END
+CALL deleteCustomer(11);
+DROP PROCEDURE deleteCustomer;
