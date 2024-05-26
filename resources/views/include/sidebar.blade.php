@@ -27,7 +27,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Master</h6>
                 <a class="collapse-item" href="{{route('barang')}}">Barang</a>
-                <a class="collapse-item" href="{{route('user')}}">User</a>
+                <a class="collapse-item" href="{{route('customer')}}">Customer</a>
             </div>
         </div>
     </li>
@@ -50,32 +50,6 @@
                 <a class="collapse-item" href="#">Laporan Barang</a>
             </div>
         </div>
-    </li>
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-        Tambahan
-    </div>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage"
-            aria-expanded="true" aria-controls="collapsePage">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Pengaturan</span>
-        </a>
-        <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Pengaturan</h6>
-                <a class="collapse-item" href="#">Login</a>
-                <a class="collapse-item" href="#">Register</a>
-                <a class="collapse-item" href="#">404 Page</a>
-                <a class="collapse-item" href="#">Blank Page</a>
-            </div>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('charts')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Grafik</span>
-        </a>
     </li>
     <hr class="sidebar-divider">
     <div class="version">Version 1.0</div>

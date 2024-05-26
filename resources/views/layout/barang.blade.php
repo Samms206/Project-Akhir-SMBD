@@ -27,11 +27,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{{ route('add-barang') }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('add-product') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="namaProduk">Nama Produk</label>
-                                            <input type="text" required class="form-control" id="namaProduk" name="nama_brg"
+                                            <input type="text" required class="form-control" id="namaProduk" name="name"
                                                 placeholder="Nama Produk">
                                         </div>
                                         <div class="form-group">
@@ -40,7 +40,7 @@
                                                 <span class="input-group-btn input-group-prepend">
                                                 </span>
                                                 <input style="text-align: center" id="touchSpin3" type="text" required
-                                                    value="0" name="stok" class="form-control">
+                                                    value="0" name="stock" class="form-control">
                                                 <span class="input-group-btn input-group-append">
                                                 </span>
                                             </div>
@@ -85,7 +85,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                     <!-- Tombol Konfirmasi Hapus -->
                                     <form id="deleteForm" method="POST"
-                                        action="{{ route('delete-barang', ':barang_id') }}">
+                                        action="{{ route('delete-product', ':barang_id') }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -113,11 +113,11 @@
                                         <div class="form-group">
                                             <label for="editNamaProduk">Nama Produk</label>
                                             <input type="text" required class="form-control" id="editNamaProduk"
-                                                name="edit_nama_brg" placeholder="Nama Produk">
+                                                name="edit_name" placeholder="Nama Produk">
                                         </div>
                                         <div class="form-group">
                                             <label for="editStok">Stok</label>
-                                            <input type="text" required class="form-control" id="editStok" name="edit_stok"
+                                            <input type="text" required class="form-control" id="editStok" name="edit_stock"
                                                 placeholder="Stok">
                                         </div>
                                         <div class="form-group">
@@ -139,10 +139,15 @@
                     {{-- end modal edit --}}
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+                        <div>
                         <button class="btn btn-primary" href="" data-toggle="modal" data-target="#exampleModal"
                             id="#myBtn">
                             Add <i class="fas fa-plus-circle"></i>
                         </button>
+                        <a class="btn btn-warning" href="#">
+                            Rollback <i class="fas fa-recycle"></i>
+                        </a>
+                        </div>
                     </div>
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -156,36 +161,26 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Nama Barang</th>
-                                    <th>Stok</th>
-                                    <th>Harga Jual</th>
-                                    <th>Harga Beli</th>
-                                    <th>Created At</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($barangs as $barang)
                                     <tr>
-                                        <td>{{ $barang->nama_brg }}</td>
-                                        <td>{{ $barang->stok }}</td>
+                                        <td>{{ $barang->name }}</td>
+                                        <td>{{ $barang->stock }}</td>
                                         <td>{{ $barang->hrg_jual }}</td>
                                         <td>{{ $barang->hrg_beli }}</td>
                                         <td>{{ $barang->created_at }}</td>
                                         <td>
                                             <a class="btn btn-primary edit-btn" href="#" data-toggle="modal"
                                                 data-target="#editModal" data-barang-id="{{ $barang->id }}"
-                                                data-barang-nama="{{ $barang->nama_brg }}"
-                                                data-barang-stok="{{ $barang->stok }}"
+                                                data-barang-nama="{{ $barang->name }}"
+                                                data-barang-stok="{{ $barang->stock }}"
                                                 data-barang-harga-jual="{{ $barang->hrg_jual }}"
                                                 data-barang-harga-beli="{{ $barang->hrg_beli }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger delete-btn" href="#" data-toggle="modal"
                                                 data-target="#deleteModal" data-barang-id="{{ $barang->id }}"
-                                                data-barang-nama="{{ $barang->nama_brg }}">
+                                                data-barang-nama="{{ $barang->name }}">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>

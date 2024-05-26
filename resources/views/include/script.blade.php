@@ -129,6 +129,7 @@
         $('#btnAddproduct').on('click', function() {
         var idBarang = $('#idBarang').val();
         var qty = parseInt($('#touchSpin3').val());
+        var namaProduk = $('#namaProduk').val();
 
         if (idBarang.trim() === '') {
             alert('ID Barang harus diisi!');
@@ -140,10 +141,16 @@
             return;
         }
 
+        if(namaProduk.trim() === '') {
+            alert('Produk harus diisi!');
+            return;
+        }
+
         $.ajax({
             url: '/add-to-cart/' + idBarang,
             type: 'GET',
             success: function(data) {
+                console.log(data);
                 var namaProduk = data.namaProduk;
                 var harga = data.harga;
                 var subtotal = harga * qty;
@@ -208,7 +215,7 @@
             var barangNama = $(this).data('barang-nama');
             $('#deleteModal').find('.modal-body').html('Anda yakin ingin menghapus data "' +
                 barangNama + '"?');
-            $('#deleteModal').find('form').attr('action', '/delete-barang/' + barangId);
+            $('#deleteModal').find('form').attr('action', '/delete-product/' + barangId);
         });
 
         $('.edit-btn').click(function() {
@@ -223,7 +230,7 @@
             $('#editModal').find('#editHargaJual').val(barangHargaJual);
             $('#editModal').find('#editHargaBeli').val(barangHargaBeli);
 
-            $('#editModal').find('form').attr('action', '/update-barang/' + barangId);
+            $('#editModal').find('form').attr('action', '/update-product/' + barangId);
         });
         //end crud barang
 
@@ -233,21 +240,19 @@
             var userName = $(this).data('user-name');
             $('#deleteModalUser').find('.modal-body').html('Anda yakin ingin menghapus data "' +
                 userName + '"?');
-            $('#deleteModalUser').find('form').attr('action', '/delete-user/' + userId);
+            $('#deleteModalUser').find('form').attr('action', '/delete-customer/' + userId);
         });
 
         $('.edit-btn-user').click(function() {
             var userId = $(this).data('user-id');
             var userName = $(this).data('user-name');
-            var userEmail = $(this).data('user-email');
+            var userPhone = $(this).data('user-phone');
             var userAddress = $(this).data('user-address');
-            var userRole = $(this).data('user-role');
-            var userPassword = $(this).data('user-password');
 
             $('#editModalUser').find('#editUserName').val(userName);
-            $('#editModalUser').find('#editUserEmail').val(userEmail);
+            $('#editModalUser').find('#editUserPhone').val(userPhone);
             $('#editModalUser').find('#editUserAddress').val(userAddress);
-            $('#editModalUser').find('form').attr('action', '/update-user/' + userId);
+            $('#editModalUser').find('form').attr('action', '/update-customer/' + userId);
         })
         //end crud user
 

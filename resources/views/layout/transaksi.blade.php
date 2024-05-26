@@ -70,7 +70,9 @@
                                     <div class="form-group">
                                         <label for="kasir">Kasir</label>
                                         <input type="text" class="form-control" id="kasir" placeholder="Kasir"
-                                            readonly value="{{ Auth::user()->name }}">
+                                            readonly value="
+                                            {{-- {{ Auth::user()->name }} --}}
+                                            Sams">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
