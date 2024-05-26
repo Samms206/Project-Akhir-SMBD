@@ -130,32 +130,20 @@
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Products Sold</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button"
-                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Month <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Select Periode</div>
-                                <a class="dropdown-item" href="#">Today</a>
-                                <a class="dropdown-item" href="#">Week</a>
-                                <a class="dropdown-item active" href="#">Month</a>
-                                <a class="dropdown-item" href="#">This Year</a>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
-                            <div class="small text-gray-500">Oblong T-Shirt
-                                <div class="small float-right"><b>600 of 800 Items</b></div>
+                        @foreach($vsold_product as $sold)
+                            <div class="mb-3">
+                                <div class="small text-gray-500">{{ $sold->product }}
+                                    <div class="small float-right"><b>{{ $sold->sold }} of {{ $sold->stock }} Items</b></div>
+                                </div>
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                        style="width: {{ ($sold->sold / $sold->stock) * 100 }}%" aria-valuenow="80" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
                             </div>
-                            <div class="progress" style="height: 12px;">
-                                <div class="progress-bar bg-warning" role="progressbar"
-                                    style="width: {{ (32 / 40) * 100 }}%" aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="card-footer text-center">
                         <a class="m-0 small text-primary card-link" href="#">View More <i
