@@ -97,3 +97,6 @@ BEGIN
 END
 CALL deleteCustomer(11);
 DROP PROCEDURE deleteCustomer;
+
+
+SELECT*FROM vdetail_history_transaction;

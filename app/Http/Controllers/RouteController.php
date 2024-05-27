@@ -38,8 +38,17 @@ class RouteController extends Controller
     }
 
     public function gotoReportTransaction(){
-        $invoices = DB::select('SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY id ASC');
-        return view('layout.report.transaksi-report')->with('invoices', $invoices);
+        $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
+        return view('layout.report.transaksi-report')->with('vhistory_trans', $vhistory_trans);
+    }
+
+    public function gotoDetailReportTransaction($id){
+        $vdetail_history_trans = DB::select('SELECT * FROM `vdetail_history_transaction` WHERE trans_id = ?', [$id]);
+        $vhistory_trans = DB::selectOne('SELECT * FROM `vhistory_transaction`');
+        return view('layout.report.detail-transaksi-report', [
+            'vdetail_history_trans' => $vdetail_history_trans,
+            'vhistory_trans' => $vhistory_trans
+        ]);
     }
 
     public function gotoRollbackProduct(){

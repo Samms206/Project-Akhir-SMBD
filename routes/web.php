@@ -20,6 +20,7 @@ Route::get('/rollback-customer', [RouteController::class, 'gotoRollbackCustomer'
 Route::get('/transaksi', [RouteController::class, 'gotoTransaksi'])->name('transaction');
 Route::get('/customer', [RouteController::class, 'gotoUser'])->name('customer');
 Route::get('/report-transaction', [RouteController::class, 'gotoReportTransaction'])->name('report-transaction');
+Route::get('/report-transaction/{id}', [RouteController::class, 'gotoDetailReportTransaction'])->name('detail-report-transaction');
 
 //CRUD Barang
 Route::get('/get-product-name/{id}', [ProductController::class, 'show'])->name('get-product-name');
