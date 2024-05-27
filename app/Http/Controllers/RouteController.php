@@ -18,12 +18,18 @@ class RouteController extends Controller
         //product sold All
         $vsold_product_all = DB::selectOne('SELECT * FROM `vsold_product_all`');
         //Total Transaction
+        $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_transaction`');
+        //Total Produts
+        $vtotal_produts = DB::selectOne('SELECT * FROM `vtotal_produts`');
 
         return view('layout.dashboard', [
             'vhistory_trans' => $vhistory_trans,
             'vsold_product' => $vsold_product,
             'vearning_monthly' => $vearning_monthly,
-            'vsold_product_all' => $vsold_product_all]);
+            'vsold_product_all' => $vsold_product_all,
+            'vtotal_transaction' => $vtotal_transaction,
+            'vtotal_produts' => $vtotal_produts
+        ]);
     }
 
     public function gotoCharts()

@@ -26,6 +26,9 @@ SELECT COUNT(*) as sales FROM transactions WHERE DATE(created_at) >= CURDATE() -
 --Total penjualan tahun ini
 SELECT COUNT(*) as sales FROM transactions WHERE DATE(created_at) >= CURDATE() - INTERVAL 365 DAY;
 
+--Total Produk
+SELECT COUNT(*) as totalProduct FROM products;
+
 --Produk terjual
 SELECT p.name as product, SUM(td.qty) as sold, p.stock FROM products p
 JOIN detail_transactions td ON td.product_id = p.id

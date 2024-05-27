@@ -57,11 +57,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $vsales_all->sales }}</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $vtotal_transaction->sales }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>
-                                        20.4%</span>
-                                    <span>Since last month</span>
+                                    <span>Since last year</span>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -77,17 +75,15 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Total Products
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vtotal_produts->totalProduct }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i>
-                                        1.10%</span>
-                                    <span>Since yesterday</span>
+                                    <span>Since last year</span>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-warning"></i>
+                                <i class="fas fa-shopping-cart fa-2x text-warning"></i>
                             </div>
                         </div>
                     </div>
