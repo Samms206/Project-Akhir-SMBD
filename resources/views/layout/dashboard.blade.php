@@ -19,10 +19,8 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings
                                     (Monthly)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ $vearning_monthly->pendapatanBulanIni }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>
-                                        3.48%</span>
                                     <span>Since last month</span>
                                 </div>
                             </div>
@@ -39,11 +37,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Product Sold</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vsold_product_all->sold }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>
-                                        12%</span>
                                     <span>Since last years</span>
                                 </div>
                             </div>
@@ -60,8 +56,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $vsales_all->sales }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
                                     <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>
                                         20.4%</span>
@@ -69,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-users fa-2x text-info"></i>
+                                <i class="fas fa-chart-line fa-2x text-info"></i>
                             </div>
                         </div>
                     </div>
@@ -156,7 +152,7 @@
                 <div class="card">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">History Transaction</h6>
-                        <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
+                        <a class="m-0 float-right btn btn-danger btn-sm" href="{{ route('report-transaction') }}">View More <i
                                 class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="table-responsive">

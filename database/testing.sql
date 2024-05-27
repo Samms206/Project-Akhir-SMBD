@@ -33,6 +33,11 @@ JOIN transactions t ON t.id = td.trans_id
 GROUP BY p.name
 ORDER BY qty DESC;
 
+--All produk terjual
+SELECT SUM(td.qty) as sold FROM products p
+JOIN detail_transactions td ON td.product_id = p.id
+JOIN transactions t ON t.id = td.trans_id
+
 
 --total tiap bulannya (january - juni)
 SELECT

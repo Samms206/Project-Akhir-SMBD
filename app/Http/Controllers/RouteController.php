@@ -9,9 +9,21 @@ class RouteController extends Controller
 {
     public function index()
     {
+        //tabel history transaction
         $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
+        //product sold
         $vsold_product = DB::select('SELECT * FROM `vsold_product` LIMIT 6');
-        return view('layout.dashboard', ['vhistory_trans' => $vhistory_trans, 'vsold_product' => $vsold_product]);
+        //Earning Monthly
+        $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
+        //product sold All
+        $vsold_product_all = DB::selectOne('SELECT * FROM `vsold_product_all`');
+        //Total Transaction
+
+        return view('layout.dashboard', [
+            'vhistory_trans' => $vhistory_trans,
+            'vsold_product' => $vsold_product,
+            'vearning_monthly' => $vearning_monthly,
+            'vsold_product_all' => $vsold_product_all]);
     }
 
     public function gotoCharts()
