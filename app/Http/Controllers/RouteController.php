@@ -61,7 +61,7 @@ class RouteController extends Controller
     }
 
     public function gotoDetailReportTransaction($id){
-        $vdetail_history_trans = DB::select('SELECT * FROM `vdetail_history_transaction` WHERE trans_id = ?', [$id]);
+        $vdetail_history_trans = DB::select('CALL detail_history_transaction(?)', [$id]);
         $vhistory_trans = DB::selectOne('SELECT * FROM `vhistory_transaction`');
         return view('layout.report.detail-transaksi-report', [
             'vdetail_history_trans' => $vdetail_history_trans,
