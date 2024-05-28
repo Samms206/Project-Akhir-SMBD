@@ -16,11 +16,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        DB::insert('INSERT INTO products (name, stock, hrg_jual, hrg_beli, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())', [
+        DB::statement('CALL insertProduct(?, ?, ?, ?)', [
             $request->name,
-            $request->stock,
+            $request->hrg_beli,
             $request->hrg_jual,
-            $request->hrg_beli
+            $request->stock,
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan.');
@@ -28,12 +28,12 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        DB::update('UPDATE products SET name = ?, stock = ?, hrg_jual = ?, hrg_beli = ?, updated_at = NOW() WHERE id = ?', [
+        DB::statement('CALL updateProduct(?, ?, ?, ?, ?)', [
+            $id,
             $request->edit_name,
             $request->edit_stock,
             $request->edit_hrg_jual,
             $request->edit_hrg_beli,
-            $id
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil diperbarui.');
