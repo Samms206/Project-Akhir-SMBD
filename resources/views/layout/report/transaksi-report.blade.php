@@ -21,9 +21,6 @@
                                     (Monthly)</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ $vearning_monthly->pendapatanBulanIni }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>
-                                        3.48%</span>
-                                    <span>Since last month</span>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -42,9 +39,6 @@
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vtotal_transaction->sales }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i>
-                                        12%</span>
-                                    <span>Since last years</span>
                                 </div>
                             </div>
                             <div class="col-auto">
