@@ -57,7 +57,15 @@ class RouteController extends Controller
 
     public function gotoReportTransaction(){
         $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
-        return view('layout.report.transaksi-report')->with('vhistory_trans', $vhistory_trans);
+        //Earning Monthly
+        $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
+        //Total Transaction
+        $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
+        return view('layout.report.transaksi-report', [
+            'vhistory_trans' => $vhistory_trans,
+            'vearning_monthly' => $vearning_monthly,
+            'vtotal_transaction' => $vtotal_transaction
+        ]);
     }
 
     public function gotoDetailReportTransaction($id){
