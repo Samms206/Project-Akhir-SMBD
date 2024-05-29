@@ -21,6 +21,9 @@ class RouteController extends Controller
         $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_transaction`');
         //Total Produts
         $vtotal_produts = DB::selectOne('SELECT * FROM `vtotal_produts`');
+        //Total Pendapatan Perbulan
+        $vtotal_earning_permonth = DB::selectOne('SELECT * FROM `vtotal_permonth`');
+
 
         return view('layout.dashboard', [
             'vhistory_trans' => $vhistory_trans,
@@ -28,7 +31,8 @@ class RouteController extends Controller
             'vearning_monthly' => $vearning_monthly,
             'vsold_product_all' => $vsold_product_all,
             'vtotal_transaction' => $vtotal_transaction,
-            'vtotal_produts' => $vtotal_produts
+            'vtotal_produts' => $vtotal_produts,
+            'vtotal_earning_permonth' => $vtotal_earning_permonth
         ]);
     }
 

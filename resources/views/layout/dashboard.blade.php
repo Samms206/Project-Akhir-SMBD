@@ -112,7 +112,10 @@
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
+                            <canvas id="myAreaChart" data-earnings="{{ json_encode($vtotal_earning_permonth) }}"></canvas>
+                            <script>
+                                console.log(JSON.parse("{{ json_encode($vtotal_earning_permonth->april) }}"));
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -187,5 +190,6 @@
         </div>
 
     </div>
+
     <!---Container Fluid-->
 @endsection

@@ -72,7 +72,8 @@
                             <td class="text-end px-0">Total</td>
                             <td></td>
                             <td></td>
-                            <td class="text-end px-0"> Rp. {{ $vhistory_trans->total }}
+                            <td class="text-end px-0">
+                                <b class="text-dark">Rp. {{ $vhistory_trans->total }}</b>
                             </td>
                         </tr>
                       </tbody>
