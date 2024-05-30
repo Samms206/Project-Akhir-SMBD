@@ -59,7 +59,7 @@
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $vtotal_transaction->sales }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
-                                    <span>Since last year</span>
+                                    <span>Since last month</span>
                                 </div>
                             </div>
                             <div class="col-auto">
