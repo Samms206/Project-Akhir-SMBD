@@ -18,7 +18,7 @@ return new class extends Migration
                 DECLARE baris INT;
                 SELECT COUNT(*) INTO baris FROM detail_transactions WHERE product_id = vid;
                 IF baris > 0 THEN
-                    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Produk tidak dapat dihapus karena terkait dengan transaksi.';
+                    SET message = 'Produk tidak dapat dihapus karena terkait dengan transaksi.';
                 ELSE
                     DELETE FROM products WHERE id = vid;
                     SET message = 'Produk berhasil dihapus.';
