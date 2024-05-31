@@ -24,10 +24,6 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->input('bayar') < $request->input('total')) {
-            return redirect('/transaksi')->with('error', 'Uang yang dibayarkan kurang!');
-        }
-        exit;
         DB::beginTransaction();
         try {
             // Membuat transaksi baru
