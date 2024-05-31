@@ -87,7 +87,7 @@
                                     <form id="deleteForm" method="POST"
                                         action="{{ route('delete-product', ':barang_id') }}">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('PUT')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
                                     </form>
                                 </div>

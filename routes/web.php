@@ -27,7 +27,8 @@ Route::get('/get-product-name/{id}', [ProductController::class, 'show'])->name('
 Route::post('/add-product', [ProductController::class, 'store'])->name('add-product');
 Route::put('/update-product/{id}', [ProductController::class, 'update'])->name('update-product');
 Route::put('/rollback-product/{id}', [ProductController::class, 'rollbackProduct'])->name('rollback-product-execute');
-Route::delete('/delete-product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
+Route::put('/delete-product/{id}', [ProductController::class, 'delete'])->name('delete-product');
+Route::delete('/delete-product/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
 
 //Transaction
 Route::get('/add-to-cart/{id}', [TransactionController::class, 'addToCart'])->name('add-to-chart');

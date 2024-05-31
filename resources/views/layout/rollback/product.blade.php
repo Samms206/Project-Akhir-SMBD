@@ -44,7 +44,7 @@
                                                         <i class="fas fa-recycle"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('delete-product', $barang->id) }}" method="POST" >
+                                                <form action="{{ route('destroy-product', $barang->id) }}" method="POST" >
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger edit-btn">

@@ -39,7 +39,7 @@ class ProductController extends Controller
         return redirect('/barang')->with('success', 'Data barang berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         DB::delete('UPDATE products SET deleted_at = NOW() WHERE id = ?', [$id]);
 
@@ -49,6 +49,18 @@ class ProductController extends Controller
     public function rollbackProduct($id){
         DB::update('UPDATE products SET deleted_at = NULL WHERE id = ?', [$id]);
         return redirect('/barang')->with('success', 'Berhasil');
+    }
+
+    public function destroy($productId){
+        $result = null;
+        $pdo = DB::connection()->getPdo();
+        $stmt = $pdo->prepare("CALL validationDeleteProduct(:vid, @hasil)");
+        $stmt->bindParam(':vid', $productId, \PDO::PARAM_INT);
+        $stmt->execute();
+        $select = $pdo->query("SELECT @hasil AS hasil");
+        $result = $select->fetch(\PDO::FETCH_ASSOC);
+
+        return redirect('/barang')->with('success', $result['hasil']);
     }
 
 }
