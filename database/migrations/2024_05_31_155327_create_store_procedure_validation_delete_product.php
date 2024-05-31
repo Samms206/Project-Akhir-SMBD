@@ -21,7 +21,7 @@ return new class extends Migration
                     SET message = 'Produk tidak dapat dihapus karena terkait dengan transaksi.';
                 ELSE
                     DELETE FROM products WHERE id = vid;
-                    SET message = 'Produk berhasil dihapus.';
+                    SET message = 'success';
                 END IF;
             END
         ");

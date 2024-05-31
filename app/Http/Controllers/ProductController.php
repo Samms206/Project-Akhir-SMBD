@@ -60,7 +60,11 @@ class ProductController extends Controller
         $select = $pdo->query("SELECT @hasil AS hasil");
         $result = $select->fetch(\PDO::FETCH_ASSOC);
 
-        return redirect('/barang')->with('success', $result['hasil']);
+        if($result['hasil'] == "success"){
+            return redirect('/barang')->with('success', "Berhasil dihapus");
+        }else{
+            return redirect('/rollback-product')->with('failed', "Tidak dapat dihapus karena terkait dengan transaksi!");
+        }
     }
 
 }
