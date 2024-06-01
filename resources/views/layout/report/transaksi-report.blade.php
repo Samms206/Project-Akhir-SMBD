@@ -12,7 +12,7 @@
         <!--Row-->
         <div class="row mb-3">
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-6 mb-4">
+            <div class="col-xl-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <!-- Earnings (Annual) Card Example -->
-            <div class="col-xl-6 mb-4">
+            <div class="col-xl-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -47,6 +47,24 @@
                     </div>
                 </div>
             </div>
+            {{-- Export Excel --}}
+            <a class="col-xl-4 mb-4" href="{{ route('export-report-transaction') }}" style="text-decoration: none">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">.xls</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Export Report</div>
+                                <div class="mt-2 mb-0 text-muted text-xs">
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-file-excel fa-2x text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
             <!-- Invoice Example -->
             <div class="col mb-4">
                 <div class="card">
