@@ -71,7 +71,7 @@
                                         <td>{{ $item->hrg_jual }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('detail-report-transaction', $item->id) }}" class="btn btn-sm btn-primary">Details</a>
+                                            <a href="{{ route('detail-report-product', $item->id) }}" class="btn btn-sm btn-primary">Details</a>
                                         </td>
                                     </tr>
                                 @endforeach

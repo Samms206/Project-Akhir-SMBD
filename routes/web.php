@@ -22,6 +22,7 @@ Route::get('/customer', [RouteController::class, 'gotoUser'])->name('customer');
 Route::get('/report-transaction', [RouteController::class, 'gotoReportTransaction'])->name('report-transaction');
 Route::get('/report-transaction/{id}', [RouteController::class, 'gotoDetailReportTransaction'])->name('detail-report-transaction');
 Route::get('/report-product', [RouteController::class, 'gotoReportProduct'])->name('report-product');
+Route::get('/report-product/{id}', [RouteController::class, 'gotoDetailReportProduct'])->name('detail-report-product');
 Route::get('/export-report-transaction', [RouteController::class, 'exportReportTransaction'])->name('export-report-transaction');
 
 //CRUD Barang

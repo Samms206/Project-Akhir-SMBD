@@ -144,6 +144,8 @@ SELECT*from detail_transactions;
 
 SELECT SUM(total-discount) as pendapatanBulanIni FROM transactions;
 
-
---codeium
---tolong buatkan fungsi untuk menghitung total produk yang sudah terjual
+-- Detail History Transaksi by product ID
+SELECT products.name as product, detail_transactions.qty, products.hrg_jual as harga, (products.hrg_jual * detail_transactions.qty) as sub_total,transactions.created_at as tanggal FROM transactions
+JOIN detail_transactions ON transactions.id = detail_transactions.trans_id
+JOIN products ON detail_transactions.product_id = products.id
+WHERE products.id = 2;

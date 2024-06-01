@@ -96,6 +96,13 @@ class RouteController extends Controller
         ]);
     }
 
+    public function gotoDetailReportProduct($id){
+        $detail_product = DB::select('CALL detailProduct(?)', [$id]);
+        return view('layout.report.detail-barang-report', [
+            'detail_product' => $detail_product,
+        ]);
+    }
+
     public function gotoRollbackProduct(){
         $barangs = DB::select('SELECT * FROM products WHERE deleted_at IS NOT NULL ORDER BY id ASC');
         return view('layout.rollback.product')->with('barangs', $barangs);
