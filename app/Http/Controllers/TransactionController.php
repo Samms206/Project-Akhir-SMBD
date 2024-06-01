@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -75,4 +76,36 @@ class TransactionController extends Controller
             }
         }
     }
+
+    public function checkStok(Request $request){
+        dd($request->all());
+        exit;
+        $barangID = DB::select('SELECT * FROM products WHERE id = ?', $request['id']);
+        $qtys = $request->input('qtys');
+
+        $insufficientStock = [];
+
+        foreach ($barangID as $key => $productId) {
+            $product = Product::find($productId);
+            if ($product->stock < $qtys[$key]) {
+                $insufficientStock[] = [
+                    'product_id' => $productId,
+                    'product_name' => $product->name,
+                    'available_stock' => $product->stock,
+                    'requested_qty' => $qtys[$key]
+                ];
+            }
+        }
+
+        if (!empty($insufficientStock)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Stok tidak mencukupi untuk beberapa produk.',
+                'insufficient_stock' => $insufficientStock
+            ]);
+        }
+
+        return response()->json(['status' => 'success']);
+    }
 }
+

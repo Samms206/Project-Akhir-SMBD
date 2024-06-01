@@ -6,7 +6,7 @@
             <h1 class="h3 mb-0 text-gray-800">Laporan Produk</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./">Home</a></li>
-                <li class="breadcrumb-item">Laporan Transaksi</li>
+                <li class="breadcrumb-item">Laporan Produk</li>
             </ol>
         </div>
         <!--Row-->
@@ -56,27 +56,21 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Customer</th>
-                                    <th>Staff</th>
-                                    <th>Total</th>
-                                    <th>Discount</th>
-                                    <th>Paid</th>
-                                    <th>Changed</th>
-                                    <th>Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Stok</th>
+                                    <th>Harga</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($vhistory_trans as $key => $item)
+                                @foreach ($products as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1}}</td>
-                                        <td>{{ $item->customer }}</td>
-                                        <td>{{ $item->staff }}</td>
-                                        <td>{{ $item->total }}</td>
-                                        <td>{{ $item->discount }}</td>
-                                        <td>{{ $item->paid }}</td>
-                                        <td>{{ $item->changed }}</td>
-                                        <td>{{ $item->tanggal }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->stock }}</td>
+                                        <td>{{ $item->hrg_jual }}</td>
+                                        <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ route('detail-report-transaction', $item->id) }}" class="btn btn-sm btn-primary">Details</a>
                                         </td>

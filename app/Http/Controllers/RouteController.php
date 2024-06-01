@@ -73,13 +73,13 @@ class RouteController extends Controller
     }
 
     public function gotoReportProduct(){
-        $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
+        $products = DB::select('SELECT * FROM `products`');
         //Earning Monthly
         $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
         //Total Transaction
         $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
         return view('layout.report.barang-report', [
-            'vhistory_trans' => $vhistory_trans,
+            'products' => $products,
             'vearning_monthly' => $vearning_monthly,
             'vtotal_transaction' => $vtotal_transaction
         ]);

@@ -34,6 +34,9 @@ Route::delete('/delete-product/{id}', [ProductController::class, 'destroy'])->na
 //Transaction
 Route::get('/add-to-cart/{id}', [TransactionController::class, 'addToCart'])->name('add-to-chart');
 Route::post('/save-transaction', [TransactionController::class, 'store'])->name('save-transaction');
+//validasi
+Route::post('/check-stock', [TransactionController::class, 'checkStok'])->name('check-stock');
+
 
 
 //CRUD User
@@ -41,3 +44,4 @@ Route::post('/add-customer', [CustomerController::class, 'store'])->name('add-cu
 Route::put('/update-customer/{id}', [CustomerController::class, 'update'])->name('update-customer');
 Route::put('/rollback-customer/{id}', [CustomerController::class, 'rollbackCustomer'])->name('rollback-customer-execute');
 Route::delete('/delete-customer/{id}', [CustomerController::class, 'destroy'])->name('delete-customer');
+
