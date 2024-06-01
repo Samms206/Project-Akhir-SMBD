@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item">Detail Laporan Transaksi</li>
             </ol>
         </div>
-        <div class="container mt-6 mb-7 mb-4">
+        <div class="container mt-6 mb-7 mb-4" id="contentPrint">
             <div class="row justify-content-center">
               <div class="col-lg-12 col-xl-7">
                 <div class="card">
@@ -31,20 +31,15 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="text-muted mb-2">Staff</div>
-                          <strong>
-                            {{ $vhistory_trans->staff}}
-                          </strong>
+                          <strong>{{ $vhistory_trans->staff}}</strong>
                         </div>
                         <div class="col-md-6 text-md-end">
                           <div class="text-muted mb-2">Payment To</div>
-                          <strong>
-                            POS Linea
-                          </strong>
+                          <strong>POS Linea</strong>
                           <p class="fs-sm">
                             Perum Reka Village, Blok AA no.4
                             <br>
-                            <a href="mailto:hellolineastudio@gmail.com" class="text-purple">hellolineastudio@gmail.com
-                            </a>
+                            <a href="mailto:hellolineastudio@gmail.com" class="text-purple">hellolineastudio@gmail.com</a>
                           </p>
                         </div>
                       </div>
@@ -72,9 +67,7 @@
                             <td class="text-end px-0">Total</td>
                             <td></td>
                             <td></td>
-                            <td class="text-end px-0">
-                                <b class="text-dark">Rp. {{ $vhistory_trans->total }}</b>
-                            </td>
+                            <td class="text-end px-0"><b class="text-dark">Rp. {{ $vhistory_trans->total }}</b></td>
                         </tr>
                       </tbody>
                     </table>
@@ -97,5 +90,19 @@
                 </div>
               </div>
             </div>
-          </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button style="width: 50%;" class="btn btn-primary" onclick="printContent('contentPrint')">Print</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function printContent(el) {
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+        }
+    </script>
 @endsection
