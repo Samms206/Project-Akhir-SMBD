@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ReportTransactionExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RouteController extends Controller
 {
@@ -62,12 +64,12 @@ class RouteController extends Controller
     public function gotoReportTransaction(){
         $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
         //Earning Monthly
-        $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
+        $vtotal_earning = DB::selectOne('SELECT * FROM `vtotal_earning`');
         //Total Transaction
         $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
         return view('layout.report.transaksi-report', [
             'vhistory_trans' => $vhistory_trans,
-            'vearning_monthly' => $vearning_monthly,
+            'vearning_monthly' => $vtotal_earning,
             'vtotal_transaction' => $vtotal_transaction
         ]);
     }
@@ -75,12 +77,12 @@ class RouteController extends Controller
     public function gotoReportProduct(){
         $products = DB::select('SELECT * FROM `products`');
         //Earning Monthly
-        $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
+        $vsold_product_all = DB::selectOne('SELECT * FROM `vsold_product_all`');
         //Total Transaction
         $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
         return view('layout.report.barang-report', [
             'products' => $products,
-            'vearning_monthly' => $vearning_monthly,
+            'vsold_product_all' => $vsold_product_all,
             'vtotal_transaction' => $vtotal_transaction
         ]);
     }
@@ -103,5 +105,9 @@ class RouteController extends Controller
     public function gotoRollbackCustomer(){
         $custs = DB::select('SELECT * FROM customers WHERE deleted_at IS NOT NULL ORDER BY id ASC');
         return view('layout.rollback.customer')->with('customers', $custs);
+    }
+
+    public function exportReportTransaction(){
+        return Excel::download(new ReportTransactionExport, 'report-transaction.xlsx');
     }
 }

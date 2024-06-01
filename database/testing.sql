@@ -41,7 +41,8 @@ SELECT SUM(td.qty) as sold FROM products p
 JOIN detail_transactions td ON td.product_id = p.id
 JOIN transactions t ON t.id = td.trans_id
 
-
+--Total stock product
+SELECT SUM(stock) as totalStock FROM products;
 --total tiap bulannya (january - juni)
 SELECT
     SUM(CASE WHEN MONTH(created_at) = 1 THEN total-discount ELSE 0 END) AS januari,
@@ -141,3 +142,8 @@ SELECT*from products;
 SELECT*from detail_transactions;
 
 
+SELECT SUM(total-discount) as pendapatanBulanIni FROM transactions;
+
+
+--codeium
+--tolong buatkan fungsi untuk menghitung total produk yang sudah terjual
