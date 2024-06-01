@@ -72,6 +72,19 @@ class RouteController extends Controller
         ]);
     }
 
+    public function gotoReportProduct(){
+        $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
+        //Earning Monthly
+        $vearning_monthly = DB::selectOne('SELECT * FROM `vearning_monthly`');
+        //Total Transaction
+        $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
+        return view('layout.report.barang-report', [
+            'vhistory_trans' => $vhistory_trans,
+            'vearning_monthly' => $vearning_monthly,
+            'vtotal_transaction' => $vtotal_transaction
+        ]);
+    }
+
     public function gotoDetailReportTransaction($id){
         $vdetail_history_trans = DB::select('CALL detail_history_transaction(?)', [$id]);
         $vhistory_trans = DB::selectOne('CALL history_transaction(?)', [$id]);

@@ -19,6 +19,7 @@
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Nama Barang</th>
                                     <th>Stok</th>
                                     <th>Harga Jual</th>
@@ -30,6 +31,7 @@
                             <tbody>
                                 @foreach ($barangs as $barang)
                                     <tr>
+                                        <td>{{ $barang->id }}</td>
                                         <td>{{ $barang->name }}</td>
                                         <td>{{ $barang->stock }}</td>
                                         <td>{{ $barang->hrg_jual }}</td>
