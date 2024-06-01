@@ -79,11 +79,11 @@ class RouteController extends Controller
         //Earning Monthly
         $vsold_product_all = DB::selectOne('SELECT * FROM `vsold_product_all`');
         //Total Transaction
-        $vtotal_transaction = DB::selectOne('SELECT * FROM `vtotal_alltransaction`');
+        $total_stock = DB::selectOne('SELECT * FROM `vtotal_stock`');
         return view('layout.report.barang-report', [
             'products' => $products,
             'vsold_product_all' => $vsold_product_all,
-            'vtotal_transaction' => $vtotal_transaction
+            'total_stock' => $total_stock
         ]);
     }
 

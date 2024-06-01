@@ -18,7 +18,7 @@
                         <div class="row align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-uppercase mb-1">Total Product</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $vsold_product_all->sold }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_stock->total_stock }}</div>
                                 <div class="mt-2 mb-0 text-muted text-xs">
                                 </div>
                             </div>
