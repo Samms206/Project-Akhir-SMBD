@@ -265,7 +265,9 @@
         })
         //end crud user
 
-        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        $('#dataTableHover').DataTable({
+            "order": [[0, 'desc']],
+        }); // ID From dataTable with Hover
 
         $('#touchSpin3').TouchSpin({
             min: 0,
