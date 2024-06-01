@@ -29,7 +29,7 @@
                                 <div class="input-group touch-spin">
                                     <span class="input-group-btn input-group-prepend">
                                     </span>
-                                    <input style="text-align: center" id="touchSpin3" type="text" value="0"
+                                    <input style="text-align: center" id="touchSpin3" type="number" value="0"
                                         name="qty" class="form-control">
                                     <span class="input-group-btn input-group-append">
                                     </span>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 {{-- id="formTransaction" --}}
-                <form method="POST" action="{{ route('save-transaction') }}" enctype="multipart/form-data">
+                <form id="transactionForm" method="POST" action="{{ route('save-transaction') }}" enctype="multipart/form-data">
                     @csrf
                     <!-- Row -->
                     <div class="row">
@@ -137,11 +137,11 @@
                             <input type="hidden" name="staff_id" id="tf_staff_id" value="1">
                             <div class="form-group">
                                 <label for="diskon">Diskon(Rp.)</label>
-                                <input value="0" type="text" class="form-control" id="diskon" placeholder="Rp.-" name="diskon">
+                                <input value="0" type="number" class="form-control" id="diskon" placeholder="Rp.-" name="diskon">
                             </div>
                             <div class="form-group">
                                 <label for="bayar">Bayar(Rp.)</label>
-                                <input required type="text" class="form-control" id="bayar" placeholder="Rp.-" name="bayar">
+                                <input required type="number" class="form-control" id="bayar" placeholder="Rp.-" name="bayar">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">

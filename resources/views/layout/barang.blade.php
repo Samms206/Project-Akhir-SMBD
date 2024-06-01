@@ -39,7 +39,7 @@
                                             <div class="input-group touch-spin">
                                                 <span class="input-group-btn input-group-prepend">
                                                 </span>
-                                                <input style="text-align: center" id="touchSpin3" type="text" required
+                                                <input style="text-align: center" id="touchSpin3" type="number" required
                                                     value="0" name="stock" class="form-control">
                                                 <span class="input-group-btn input-group-append">
                                                 </span>
@@ -47,12 +47,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="hrgjual">Harga Jual</label>
-                                            <input type="text" required class="form-control" id="hrgjual" placeholder="Rp.-"
+                                            <input type="number" required class="form-control" id="hrgjual" placeholder="Rp.-"
                                                 name="hrg_jual">
                                         </div>
                                         <div class="form-group">
                                             <label for="hrgeli">Harga Beli</label>
-                                            <input type="text" required class="form-control" id="hrgeli" placeholder="Rp.-"
+                                            <input type="number" required class="form-control" id="hrgeli" placeholder="Rp.-"
                                                 name="hrg_beli">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Simpan</button>

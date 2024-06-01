@@ -54,9 +54,66 @@
 <script>
     //add id customer
     $(document).ready(function() {
-        $('#select2SinglePlaceholder').on('change', function() {
-            var selectedCustomerId = $(this).val();
-            $('#tf_cust_id').val(selectedCustomerId);
+        $('#btnConfirm').on('click', function(event) {
+            event.preventDefault(); // Mencegah form submit default
+
+            // Ambil nilai input
+            var total = parseFloat($('#tf_total').val());
+            var bayar = parseFloat($('#bayar').val());
+
+            // Validasi
+            if (isNaN(total) || isNaN(bayar)) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Isi Terlebih dahulu form Bayar!!!",
+                    icon: "error"
+                });
+                return;
+            }
+
+            if (bayar < total) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Uang anda kurang",
+                    icon: "error"
+                });
+                return;
+            }
+
+            // Kirim data dengan AJAX jika validasi berhasil
+            $.ajax({
+                url: $('#transactionForm').attr('action'),
+                method: 'POST',
+                data: $('#transactionForm').serialize(),
+                success: function(response) {
+                    if (response.status === 'error') {
+                        Swal.fire({
+                            title: "Error",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Good job!",
+                            text: response.message,
+                            icon: "success"
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                },
+                error: function(xhr) {
+                    Swal.fire({
+                        title: "Error",
+                        text: 'Terjadi kesalahan, silakan coba lagi.',
+                        icon: "error"
+                    });
+                }
+            });
+            $('#select2SinglePlaceholder').on('change', function() {
+                var selectedCustomerId = $(this).val();
+                $('#tf_cust_id').val(selectedCustomerId);
+            });
         });
     });
     //end add id customer
@@ -94,14 +151,14 @@
     //end Update Grand Total
 
     //remove product dari keranjang
-    function removeProduct(event){
+    function removeProduct(event) {
         $(event).closest('tr').remove();
         updateTotal();
     }
     //end remove product
 
     //clear
-    function clearAddProduct(){
+    function clearAddProduct() {
         $('#idBarang').val('');
         $('#namaProduk').val('');
         $('#touchSpin3').val('0');
@@ -136,34 +193,34 @@
 
         //add product to chart
         $('#btnAddproduct').on('click', function() {
-        var idBarang = $('#idBarang').val();
-        var qty = parseInt($('#touchSpin3').val());
-        var namaProduk = $('#namaProduk').val();
+            var idBarang = $('#idBarang').val();
+            var qty = parseInt($('#touchSpin3').val());
+            var namaProduk = $('#namaProduk').val();
 
-        if (idBarang.trim() === '') {
-            alert('ID Barang harus diisi!');
-            return;
-        }
+            if (idBarang.trim() === '') {
+                alert('ID Barang harus diisi!');
+                return;
+            }
 
-        if(qty <= 0) {
-            alert('Qty harus diisi!');
-            return;
-        }
+            if (qty <= 0) {
+                alert('Qty harus diisi!');
+                return;
+            }
 
-        if(namaProduk.trim() === '') {
-            alert('Produk harus diisi!');
-            return;
-        }
+            if (namaProduk.trim() === '') {
+                alert('Produk harus diisi!');
+                return;
+            }
 
-        $.ajax({
-            url: '/add-to-cart/' + idBarang,
-            type: 'GET',
-            success: function(data) {
-                console.log(data);
-                var namaProduk = data.namaProduk;
-                var harga = data.harga;
-                var subtotal = harga * qty;
-                $('#keranjang tbody').append(`
+            $.ajax({
+                url: '/add-to-cart/' + idBarang,
+                type: 'GET',
+                success: function(data) {
+                    console.log(data);
+                    var namaProduk = data.namaProduk;
+                    var harga = data.harga;
+                    var subtotal = harga * qty;
+                    $('#keranjang tbody').append(`
                     <tr>
                         <td><button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)"><i class="fas fa-trash"></i></button></td>
                         <td>
@@ -187,13 +244,13 @@
                         </td>
                     </tr>
                 `);
-                updateTotal();
-                clearAddProduct();
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat mendapatkan detail produk!');
-            }
+                    updateTotal();
+                    clearAddProduct();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mendapatkan detail produk!');
+                }
             });
         });
         //end addproduct to chart
@@ -247,7 +304,8 @@
         $('.delete-btn-user').click(function() {
             var userId = $(this).data('user-id');
             var userName = $(this).data('user-name');
-            $('#deleteModalUser').find('.modal-body').html('Anda yakin ingin menghapus data "' +
+            $('#deleteModalUser').find('.modal-body').html(
+                'Anda yakin ingin menghapus data "' +
                 userName + '"?');
             $('#deleteModalUser').find('form').attr('action', '/delete-customer/' + userId);
         });
@@ -266,7 +324,9 @@
         //end crud user
 
         $('#dataTableHover').DataTable({
-            "order": [[0, 'desc']],
+            "order": [
+                [0, 'desc']
+            ],
         }); // ID From dataTable with Hover
 
         $('#touchSpin3').TouchSpin({
