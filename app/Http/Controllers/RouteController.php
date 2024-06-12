@@ -9,8 +9,16 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class RouteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        // Ambil nilai is_admin dari sesi
+        $isAdmin = $request->session()->get('is_admin');
+
+        if (!$isAdmin) {
+            return view('Auth.login');
+        }
+
         //tabel history transaction
         $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
         //product sold
@@ -61,7 +69,8 @@ class RouteController extends Controller
         return view('layout.user')->with('customers', $custs);
     }
 
-    public function gotoReportTransaction(){
+    public function gotoReportTransaction()
+    {
         $vhistory_trans = DB::select('SELECT * FROM `vhistory_transaction`');
         //Earning Monthly
         $vtotal_earning = DB::selectOne('SELECT * FROM `vtotal_earning`');
@@ -74,7 +83,8 @@ class RouteController extends Controller
         ]);
     }
 
-    public function gotoReportProduct(){
+    public function gotoReportProduct()
+    {
         $products = DB::select('SELECT * FROM `products`');
         //Earning Monthly
         $vsold_product_all = DB::selectOne('SELECT * FROM `vsold_product_all`');
@@ -87,7 +97,8 @@ class RouteController extends Controller
         ]);
     }
 
-    public function gotoDetailReportTransaction($id){
+    public function gotoDetailReportTransaction($id)
+    {
         $vdetail_history_trans = DB::select('CALL detail_history_transaction(?)', [$id]);
         $vhistory_trans = DB::selectOne('CALL history_transaction(?)', [$id]);
         return view('layout.report.detail-transaksi-report', [
@@ -96,25 +107,33 @@ class RouteController extends Controller
         ]);
     }
 
-    public function gotoDetailReportProduct($id){
+    public function gotoDetailReportProduct($id)
+    {
         $detail_product = DB::select('CALL detailProduct(?)', [$id]);
         return view('layout.report.detail-barang-report', [
             'detail_product' => $detail_product,
         ]);
     }
 
-    public function gotoRollbackProduct(){
+    public function gotoRollbackProduct()
+    {
         $barangs = DB::select('SELECT * FROM products WHERE deleted_at IS NOT NULL ORDER BY id ASC');
         return view('layout.rollback.product')->with('barangs', $barangs);
-
     }
 
-    public function gotoRollbackCustomer(){
+    public function gotoRollbackCustomer()
+    {
         $custs = DB::select('SELECT * FROM customers WHERE deleted_at IS NOT NULL ORDER BY id ASC');
         return view('layout.rollback.customer')->with('customers', $custs);
     }
 
-    public function exportReportTransaction(){
+    public function exportReportTransaction()
+    {
         return Excel::download(new ReportTransactionExport, 'report-transaction.xlsx');
+    }
+
+    public function login()
+    {
+        return view('Auth.login');
     }
 }

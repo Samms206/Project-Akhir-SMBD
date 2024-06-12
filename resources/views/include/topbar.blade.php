@@ -24,7 +24,7 @@
                     Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal"
+                <a class="dropdown-item" href="/logout" data-toggle="modal"
                     data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
@@ -50,7 +50,7 @@ aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-primary"
                 data-dismiss="modal">Cancel</button>
-            {{-- <a href="{{ route('logout') }}" class="btn btn-primary">Logout</a> --}}
+            <a href="{{ route('logout') }}" class="btn btn-primary">Logout</a>
         </div>
     </div>
 </div>

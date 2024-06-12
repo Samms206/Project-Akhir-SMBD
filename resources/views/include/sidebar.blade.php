@@ -37,6 +37,7 @@
             <span>Transaksi</span>
         </a>
     </li>
+    @if(session('is_admin') == 1)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
             aria-expanded="true" aria-controls="collapseTable">
@@ -51,6 +52,7 @@
             </div>
         </div>
     </li>
+    @endif
     <hr class="sidebar-divider">
     <div class="version">Version 1.0</div>
 </ul>

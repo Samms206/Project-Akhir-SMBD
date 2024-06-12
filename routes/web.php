@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
@@ -13,6 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', [RouteController::class, 'index'])->name('dashboard');
+Route::get('/login', [RouteController::class, 'login'])->name('login');
 Route::get('/charts', [RouteController::class, 'gotoCharts'])->name('charts');
 Route::get('/barang', [RouteController::class, 'gotoBarang'])->name('barang');
 Route::get('/rollback-product', [RouteController::class, 'gotoRollbackProduct'])->name('rollback-product');
@@ -24,6 +25,10 @@ Route::get('/report-transaction/{id}', [RouteController::class, 'gotoDetailRepor
 Route::get('/report-product', [RouteController::class, 'gotoReportProduct'])->name('report-product');
 Route::get('/report-product/{id}', [RouteController::class, 'gotoDetailReportProduct'])->name('detail-report-product');
 Route::get('/export-report-transaction', [RouteController::class, 'exportReportTransaction'])->name('export-report-transaction');
+
+//Auth
+Route::post('/login-process', [AuthController::class, 'loginProses'])->name('login-process');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //CRUD Barang
 Route::get('/get-product-name/{id}', [ProductController::class, 'show'])->name('get-product-name');
@@ -38,7 +43,6 @@ Route::get('/add-to-cart/{id}', [TransactionController::class, 'addToCart'])->na
 Route::post('/save-transaction', [TransactionController::class, 'store'])->name('save-transaction');
 //validasi
 Route::post('/check-stock', [TransactionController::class, 'checkStok'])->name('check-stock');
-
 
 
 //CRUD User
