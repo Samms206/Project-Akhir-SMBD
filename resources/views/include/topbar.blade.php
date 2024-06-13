@@ -20,10 +20,12 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
+                @if(session('is_admin') == "yes")
                 <a class="dropdown-item" href="{{ route('log-activity') }}">
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     Activity Log
                 </a>
+                @endif
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout" data-toggle="modal"
                     data-target="#logoutModal">

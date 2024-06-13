@@ -72,7 +72,6 @@
                                         @if (session('username'))
                                             <input type="text" class="form-control" id="kasir" placeholder="Kasir"
                                             readonly value="{{ session('username') }}" name="staff_name">
-                                            <input type="hidden" value="{{ session('user_id') }}" name="staff_id">
                                         @endif  
                                     </div>
                                 </div>
@@ -137,7 +136,7 @@
                             <input type="hidden" name="total" id="tf_total">
                             <input type="hidden" name="change" id="tf_change">
                             <input type="hidden" name="cust_id" id="tf_cust_id">
-                            <input type="hidden" name="staff_id" id="tf_staff_id" value="1">
+                            <input type="hidden" name="staff_id" id="tf_staff_id" value="{{ session('user_id') }}">
                             <div class="form-group">
                                 <label for="diskon">Diskon(Rp.)</label>
                                 <input value="0" type="number" class="form-control" id="diskon" placeholder="Rp.-" name="diskon">

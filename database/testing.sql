@@ -107,6 +107,23 @@ END
 CALL deleteCustomer(11);
 DROP PROCEDURE deleteCustomer;
 
+--LOOP
+DELIMITER //
+CREATE PROCEDURE LimitHistoryTransaction()
+BEGIN
+    DECLARE i INT DEFAULT 0;
+
+    WHILE i < 10 DO
+        SET i = i + 1;
+    END WHILE;
+
+    SELECT * FROM vhistory_transaction LIMIT i;
+
+END //
+DELIMITER ;
+CALL LimitHistoryTransaction();
+DROP PROCEDURE LimitHistoryTransaction;
+
 
 SELECT*FROM vdetail_history_transaction;
 

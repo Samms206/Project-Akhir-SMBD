@@ -53,9 +53,7 @@ class TransactionController extends Controller
 
                 // Menyimpan detail transaksi
                 $idBarangArray = $request->input('id_barang');
-                $hargaArray = $request->input('harga');
                 $qtyArray = $request->input('qty');
-                $subTotalArray = $request->input('sub_total');
 
                 foreach ($idBarangArray as $key => $idBarang) {
                     $qty = $qtyArray[$key];
