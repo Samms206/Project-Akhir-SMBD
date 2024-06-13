@@ -69,8 +69,11 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="kasir">Kasir</label>
-                                        <input type="text" class="form-control" id="kasir" placeholder="Kasir"
-                                            readonly value="Sams" name="staff_id">
+                                        @if (session('username'))
+                                            <input type="text" class="form-control" id="kasir" placeholder="Kasir"
+                                            readonly value="{{ session('username') }}" name="staff_name">
+                                            <input type="hidden" value="{{ session('user_id') }}" name="staff_id">
+                                        @endif  
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

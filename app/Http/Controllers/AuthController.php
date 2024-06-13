@@ -11,14 +11,14 @@ class AuthController extends Controller
     public function loginProses(Request $request){
         $user = DB::select('SELECT * FROM `users` WHERE email=? AND `password` = ?', [$request->email, $request->password]);
         if($user){
-            if ($user[0]->is_admin == 1) {
-                $request->session()->put('is_admin', "1");
-            } else {
-                $request->session()->put('is_admin', "0");
-            }
+            $request->session()->put([
+                'is_admin' => $user[0]->is_admin ? 'yes' : 'no',
+                'user_id' => $user[0]->id,
+                'username' => $user[0]->name
+            ]);
             return redirect('/')->with('success', 'Login Success');
         }else{
-            return redirect()->back()->withErrors("Email or Password not match!")->withInput();
+            return redirect()->back()->with("Email or Password not match!")->withInput();
         }
     }
 

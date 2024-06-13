@@ -14,8 +14,7 @@ class RouteController extends Controller
 
         // Ambil nilai is_admin dari sesi
         $isAdmin = $request->session()->get('is_admin');
-
-        if (!$isAdmin) {
+        if ($isAdmin !== "yes" && $isAdmin !== "no") {
             return view('Auth.login');
         }
 
@@ -135,5 +134,11 @@ class RouteController extends Controller
     public function login()
     {
         return view('Auth.login');
+    }
+    
+    public function logActivity()
+    {
+        $log_activity = DB::select('SELECT * FROM history_logs');
+        return view('layout.report.history_log')->with('log_activity', $log_activity);
     }
 }

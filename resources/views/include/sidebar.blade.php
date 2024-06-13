@@ -37,7 +37,7 @@
             <span>Transaksi</span>
         </a>
     </li>
-    @if(session('is_admin') == 1)
+    @if(session('is_admin') == "yes")
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
             aria-expanded="true" aria-controls="collapseTable">

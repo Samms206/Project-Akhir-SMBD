@@ -25,6 +25,7 @@ Route::get('/report-transaction/{id}', [RouteController::class, 'gotoDetailRepor
 Route::get('/report-product', [RouteController::class, 'gotoReportProduct'])->name('report-product');
 Route::get('/report-product/{id}', [RouteController::class, 'gotoDetailReportProduct'])->name('detail-report-product');
 Route::get('/export-report-transaction', [RouteController::class, 'exportReportTransaction'])->name('export-report-transaction');
+Route::get('/log-activity', [RouteController::class, 'logActivity'])->name('log-activity');
 
 //Auth
 Route::post('/login-process', [AuthController::class, 'loginProses'])->name('login-process');
